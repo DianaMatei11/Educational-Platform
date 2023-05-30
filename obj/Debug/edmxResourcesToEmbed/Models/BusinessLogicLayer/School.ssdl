@@ -1,0 +1,537 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="SchoolModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityType Name="Absente">
+    <Key>
+      <PropertyRef Name="AbsentaID" />
+    </Key>
+    <Property Name="AbsentaID" Type="int" Nullable="false" />
+    <Property Name="ElevID" Type="int" />
+    <Property Name="MaterieID" Type="int" />
+    <Property Name="Semestru" Type="int" />
+    <Property Name="Motivare" Type="bit" />
+    <Property Name="data_absenta" Type="date" />
+  </EntityType>
+  <EntityType Name="AsocieriAnSpecMaterie">
+    <Key>
+      <PropertyRef Name="AsocieriAnSpecMaterieID" />
+    </Key>
+    <Property Name="AsocieriAnSpecMaterieID" Type="int" Nullable="false" />
+    <Property Name="AnStudiu" Type="int" />
+    <Property Name="SpecializareID" Type="int" />
+    <Property Name="MaterieID" Type="int" />
+  </EntityType>
+  <EntityType Name="AsocieriElevAnSpec">
+    <Key>
+      <PropertyRef Name="AsocieriElevAnSpecID" />
+    </Key>
+    <Property Name="AsocieriElevAnSpecID" Type="int" Nullable="false" />
+    <Property Name="ElevID" Type="int" />
+    <Property Name="AnStudiu" Type="int" />
+    <Property Name="SpecializareID" Type="int" />
+  </EntityType>
+  <EntityType Name="AsocieriProfMaterieClasa">
+    <Key>
+      <PropertyRef Name="AsocieriProfMaterieClasaID" />
+    </Key>
+    <Property Name="AsocieriProfMaterieClasaID" Type="int" Nullable="false" />
+    <Property Name="ProfesorID" Type="int" />
+    <Property Name="MaterieID" Type="int" />
+    <Property Name="ClasaID" Type="int" />
+  </EntityType>
+  <EntityType Name="Clase">
+    <Key>
+      <PropertyRef Name="ClasaID" />
+    </Key>
+    <Property Name="ClasaID" Type="int" Nullable="false" />
+    <Property Name="NumeClasa" Type="varchar" MaxLength="20" />
+    <Property Name="AnStudiu" Type="int" />
+    <Property Name="DiriginteID" Type="int" />
+    <Property Name="SpecializareID" Type="int" />
+  </EntityType>
+  <EntityType Name="Diriginti">
+    <Key>
+      <PropertyRef Name="DiriginteID" />
+    </Key>
+    <Property Name="DiriginteID" Type="int" Nullable="false" />
+    <Property Name="ProfesorID" Type="int" />
+    <Property Name="UtilizatorID" Type="int" />
+  </EntityType>
+  <EntityType Name="Elevi">
+    <Key>
+      <PropertyRef Name="ElevID" />
+    </Key>
+    <Property Name="ElevID" Type="int" Nullable="false" />
+    <Property Name="Nume" Type="varchar" MaxLength="50" />
+    <Property Name="UtilizatorID" Type="int" />
+    <Property Name="Prenume" Type="varchar" MaxLength="50" />
+  </EntityType>
+  <EntityType Name="MaterialeDidactice">
+    <Key>
+      <PropertyRef Name="MaterialID" />
+    </Key>
+    <Property Name="MaterialID" Type="int" Nullable="false" />
+    <Property Name="MaterieID" Type="int" />
+    <Property Name="NumeMateriale" Type="varchar" MaxLength="50" />
+    <Property Name="TipFisier" Type="varchar" MaxLength="20" />
+  </EntityType>
+  <EntityType Name="Materii">
+    <Key>
+      <PropertyRef Name="MaterieID" />
+    </Key>
+    <Property Name="MaterieID" Type="int" Nullable="false" />
+    <Property Name="Nume" Type="varchar" MaxLength="50" />
+    <Property Name="AreTeza" Type="bit" />
+  </EntityType>
+  <EntityType Name="Note">
+    <Key>
+      <PropertyRef Name="NotaID" />
+    </Key>
+    <Property Name="NotaID" Type="int" Nullable="false" />
+    <Property Name="ElevID" Type="int" />
+    <Property Name="MaterieID" Type="int" />
+    <Property Name="Valoare" Type="int" />
+    <Property Name="Semestru" Type="int" />
+    <Property Name="TipNota" Type="bit" />
+  </EntityType>
+  <EntityType Name="Profesori">
+    <Key>
+      <PropertyRef Name="ProfesorID" />
+    </Key>
+    <Property Name="ProfesorID" Type="int" Nullable="false" />
+    <Property Name="Nume" Type="varchar" MaxLength="50" />
+    <Property Name="UtilizatorID" Type="int" />
+    <Property Name="Prenume" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="esteDiriginte" Type="bit" />
+  </EntityType>
+  <EntityType Name="Specializari">
+    <Key>
+      <PropertyRef Name="SpecializareID" />
+    </Key>
+    <Property Name="SpecializareID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Nume" Type="varchar" MaxLength="50" />
+  </EntityType>
+  <EntityType Name="sysdiagrams">
+    <Key>
+      <PropertyRef Name="diagram_id" />
+    </Key>
+    <Property Name="name" Type="nvarchar" MaxLength="128" Nullable="false" />
+    <Property Name="principal_id" Type="int" Nullable="false" />
+    <Property Name="diagram_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="version" Type="int" />
+    <Property Name="definition" Type="varbinary(max)" />
+  </EntityType>
+  <EntityType Name="Utilizatori">
+    <Key>
+      <PropertyRef Name="UtilizatorID" />
+    </Key>
+    <Property Name="UtilizatorID" Type="int" Nullable="false" />
+    <Property Name="Nume" Type="varchar" MaxLength="50" />
+    <Property Name="Parola" Type="varchar" MaxLength="50" />
+    <Property Name="Rol" Type="varchar" MaxLength="100" Nullable="false" />
+  </EntityType>
+  <Association Name="FK__Absente__ElevID__52593CB8">
+    <End Role="Elevi" Type="Self.Elevi" Multiplicity="0..1" />
+    <End Role="Absente" Type="Self.Absente" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Elevi">
+        <PropertyRef Name="ElevID" />
+      </Principal>
+      <Dependent Role="Absente">
+        <PropertyRef Name="ElevID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Absente__Materie__534D60F1">
+    <End Role="Materii" Type="Self.Materii" Multiplicity="0..1" />
+    <End Role="Absente" Type="Self.Absente" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Materii">
+        <PropertyRef Name="MaterieID" />
+      </Principal>
+      <Dependent Role="Absente">
+        <PropertyRef Name="MaterieID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__AsocieriA__Mater__49C3F6B7">
+    <End Role="Materii" Type="Self.Materii" Multiplicity="0..1" />
+    <End Role="AsocieriAnSpecMaterie" Type="Self.AsocieriAnSpecMaterie" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Materii">
+        <PropertyRef Name="MaterieID" />
+      </Principal>
+      <Dependent Role="AsocieriAnSpecMaterie">
+        <PropertyRef Name="MaterieID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__AsocieriA__Speci__4AB81AF0">
+    <End Role="Specializari" Type="Self.Specializari" Multiplicity="0..1" />
+    <End Role="AsocieriAnSpecMaterie" Type="Self.AsocieriAnSpecMaterie" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Specializari">
+        <PropertyRef Name="SpecializareID" />
+      </Principal>
+      <Dependent Role="AsocieriAnSpecMaterie">
+        <PropertyRef Name="SpecializareID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__AsocieriE__ElevI__02FC7413">
+    <End Role="Elevi" Type="Self.Elevi" Multiplicity="0..1" />
+    <End Role="AsocieriElevAnSpec" Type="Self.AsocieriElevAnSpec" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Elevi">
+        <PropertyRef Name="ElevID" />
+      </Principal>
+      <Dependent Role="AsocieriElevAnSpec">
+        <PropertyRef Name="ElevID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__AsocieriE__Speci__03F0984C">
+    <End Role="Specializari" Type="Self.Specializari" Multiplicity="0..1" />
+    <End Role="AsocieriElevAnSpec" Type="Self.AsocieriElevAnSpec" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Specializari">
+        <PropertyRef Name="SpecializareID" />
+      </Principal>
+      <Dependent Role="AsocieriElevAnSpec">
+        <PropertyRef Name="SpecializareID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__AsocieriP__Clasa__4F7CD00D">
+    <End Role="Clase" Type="Self.Clase" Multiplicity="0..1" />
+    <End Role="AsocieriProfMaterieClasa" Type="Self.AsocieriProfMaterieClasa" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Clase">
+        <PropertyRef Name="ClasaID" />
+      </Principal>
+      <Dependent Role="AsocieriProfMaterieClasa">
+        <PropertyRef Name="ClasaID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__AsocieriP__Mater__4E88ABD4">
+    <End Role="Materii" Type="Self.Materii" Multiplicity="0..1" />
+    <End Role="AsocieriProfMaterieClasa" Type="Self.AsocieriProfMaterieClasa" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Materii">
+        <PropertyRef Name="MaterieID" />
+      </Principal>
+      <Dependent Role="AsocieriProfMaterieClasa">
+        <PropertyRef Name="MaterieID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__AsocieriP__Profe__4D94879B">
+    <End Role="Profesori" Type="Self.Profesori" Multiplicity="0..1" />
+    <End Role="AsocieriProfMaterieClasa" Type="Self.AsocieriProfMaterieClasa" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Profesori">
+        <PropertyRef Name="ProfesorID" />
+      </Principal>
+      <Dependent Role="AsocieriProfMaterieClasa">
+        <PropertyRef Name="ProfesorID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Clase__Diriginte__45F365D3">
+    <End Role="Diriginti" Type="Self.Diriginti" Multiplicity="0..1" />
+    <End Role="Clase" Type="Self.Clase" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Diriginti">
+        <PropertyRef Name="DiriginteID" />
+      </Principal>
+      <Dependent Role="Clase">
+        <PropertyRef Name="DiriginteID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Clase__Specializ__46E78A0C">
+    <End Role="Specializari" Type="Self.Specializari" Multiplicity="0..1" />
+    <End Role="Clase" Type="Self.Clase" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Specializari">
+        <PropertyRef Name="SpecializareID" />
+      </Principal>
+      <Dependent Role="Clase">
+        <PropertyRef Name="SpecializareID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Diriginti__Profe__3F466844">
+    <End Role="Profesori" Type="Self.Profesori" Multiplicity="0..1" />
+    <End Role="Diriginti" Type="Self.Diriginti" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Profesori">
+        <PropertyRef Name="ProfesorID" />
+      </Principal>
+      <Dependent Role="Diriginti">
+        <PropertyRef Name="ProfesorID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Diriginti__Utili__3E52440B">
+    <End Role="Utilizatori" Type="Self.Utilizatori" Multiplicity="0..1" />
+    <End Role="Diriginti" Type="Self.Diriginti" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Utilizatori">
+        <PropertyRef Name="UtilizatorID" />
+      </Principal>
+      <Dependent Role="Diriginti">
+        <PropertyRef Name="UtilizatorID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Elevi__Utilizato__38996AB5">
+    <End Role="Utilizatori" Type="Self.Utilizatori" Multiplicity="0..1" />
+    <End Role="Elevi" Type="Self.Elevi" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Utilizatori">
+        <PropertyRef Name="UtilizatorID" />
+      </Principal>
+      <Dependent Role="Elevi">
+        <PropertyRef Name="UtilizatorID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Materiale__Mater__59FA5E80">
+    <End Role="Materii" Type="Self.Materii" Multiplicity="0..1" />
+    <End Role="MaterialeDidactice" Type="Self.MaterialeDidactice" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Materii">
+        <PropertyRef Name="MaterieID" />
+      </Principal>
+      <Dependent Role="MaterialeDidactice">
+        <PropertyRef Name="MaterieID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Note__ElevID__5629CD9C">
+    <End Role="Elevi" Type="Self.Elevi" Multiplicity="0..1" />
+    <End Role="Note" Type="Self.Note" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Elevi">
+        <PropertyRef Name="ElevID" />
+      </Principal>
+      <Dependent Role="Note">
+        <PropertyRef Name="ElevID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Note__MaterieID__571DF1D5">
+    <End Role="Materii" Type="Self.Materii" Multiplicity="0..1" />
+    <End Role="Note" Type="Self.Note" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Materii">
+        <PropertyRef Name="MaterieID" />
+      </Principal>
+      <Dependent Role="Note">
+        <PropertyRef Name="MaterieID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Profesori__Utili__3B75D760">
+    <End Role="Utilizatori" Type="Self.Utilizatori" Multiplicity="0..1" />
+    <End Role="Profesori" Type="Self.Profesori" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Utilizatori">
+        <PropertyRef Name="UtilizatorID" />
+      </Principal>
+      <Dependent Role="Profesori">
+        <PropertyRef Name="UtilizatorID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Function Name="AuthenticateUser" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="Username" Type="varchar" Mode="In" />
+    <Parameter Name="Role" Type="varchar" Mode="In" />
+    <Parameter Name="UserId" Type="int" Mode="InOut" />
+  </Function>
+  <Function Name="DeleteElev" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="Id" Type="int" Mode="In" />
+    <Parameter Name="Nume" Type="nvarchar" Mode="In" />
+    <Parameter Name="Prenume" Type="nvarchar" Mode="In" />
+  </Function>
+  <Function Name="DeleteElev_Utilizator" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="idUtilizator" Type="int" Mode="In" />
+  </Function>
+  <Function Name="DeleteMaterie" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="Id" Type="int" Mode="In" />
+    <Parameter Name="NumeMaterie" Type="nvarchar" Mode="In" />
+  </Function>
+  <Function Name="DeleteProfesor_Utilizator" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="idUtilizator" Type="int" Mode="In" />
+  </Function>
+  <Function Name="DeleteProfessor" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="Id" Type="int" Mode="In" />
+    <Parameter Name="Nume" Type="nvarchar" Mode="In" />
+    <Parameter Name="Prenume" Type="nvarchar" Mode="In" />
+  </Function>
+  <Function Name="DeleteSpecializare" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="Id" Type="int" Mode="In" />
+    <Parameter Name="Nume" Type="nvarchar" Mode="In" />
+  </Function>
+  <Function Name="DeleteUtilizator" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="idUtilizator" Type="int" Mode="In" />
+  </Function>
+  <Function Name="fn_diagramobjects" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="true" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" ReturnType="int" />
+  <Function Name="GetAllElevi" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+  <Function Name="GetAllProfessors" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+  <Function Name="GetAllSpecializari" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+  <Function Name="GetAllUtilizatori" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+  <Function Name="GetClase" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+  <Function Name="GetMaterii" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+  <Function Name="GetPeople" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+  <Function Name="sp_alterdiagram" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
+    <Parameter Name="owner_id" Type="int" Mode="In" />
+    <Parameter Name="version" Type="int" Mode="In" />
+    <Parameter Name="definition" Type="varbinary(max)" Mode="In" />
+  </Function>
+  <Function Name="sp_creatediagram" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
+    <Parameter Name="owner_id" Type="int" Mode="In" />
+    <Parameter Name="version" Type="int" Mode="In" />
+    <Parameter Name="definition" Type="varbinary(max)" Mode="In" />
+  </Function>
+  <Function Name="sp_dropdiagram" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
+    <Parameter Name="owner_id" Type="int" Mode="In" />
+  </Function>
+  <Function Name="sp_helpdiagramdefinition" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
+    <Parameter Name="owner_id" Type="int" Mode="In" />
+  </Function>
+  <Function Name="sp_helpdiagrams" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
+    <Parameter Name="owner_id" Type="int" Mode="In" />
+  </Function>
+  <Function Name="sp_renamediagram" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
+    <Parameter Name="owner_id" Type="int" Mode="In" />
+    <Parameter Name="new_diagramname" Type="nvarchar" Mode="In" />
+  </Function>
+  <Function Name="sp_upgraddiagrams" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+  <Function Name="UpdateElev" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="ElevID" Type="int" Mode="In" />
+    <Parameter Name="Nume" Type="nvarchar" Mode="In" />
+    <Parameter Name="Prenume" Type="nvarchar" Mode="In" />
+    <Parameter Name="UtilizatorID" Type="int" Mode="In" />
+  </Function>
+  <Function Name="UpdateEsteDiriginte" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="ProfesorID" Type="int" Mode="In" />
+    <Parameter Name="esteDiriginte" Type="bit" Mode="In" />
+  </Function>
+  <Function Name="UpdateMaterie" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="MaterieID" Type="int" Mode="In" />
+    <Parameter Name="NumeMaterie" Type="varchar" Mode="In" />
+  </Function>
+  <Function Name="UpdateProfessor" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="ProfessorID" Type="int" Mode="In" />
+    <Parameter Name="Nume" Type="varchar" Mode="In" />
+    <Parameter Name="Prenume" Type="varchar" Mode="In" />
+    <Parameter Name="esteDiriginte" Type="bit" Mode="In" />
+    <Parameter Name="UtilizatorID" Type="int" Mode="In" />
+  </Function>
+  <Function Name="UpdateSpecializare" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="SpecializareID" Type="int" Mode="In" />
+    <Parameter Name="Nume" Type="nvarchar" Mode="In" />
+  </Function>
+  <Function Name="UpdateUtilizator" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="UtilizatorID" Type="int" Mode="In" />
+    <Parameter Name="Nume" Type="nvarchar" Mode="In" />
+    <Parameter Name="Parola" Type="nvarchar" Mode="In" />
+    <Parameter Name="Rol" Type="nvarchar" Mode="In" />
+  </Function>
+  <EntityContainer Name="SchoolModelStoreContainer">
+    <EntitySet Name="Absente" EntityType="Self.Absente" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="AsocieriAnSpecMaterie" EntityType="Self.AsocieriAnSpecMaterie" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="AsocieriElevAnSpec" EntityType="Self.AsocieriElevAnSpec" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="AsocieriProfMaterieClasa" EntityType="Self.AsocieriProfMaterieClasa" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Clase" EntityType="Self.Clase" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Diriginti" EntityType="Self.Diriginti" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Elevi" EntityType="Self.Elevi" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="MaterialeDidactice" EntityType="Self.MaterialeDidactice" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Materii" EntityType="Self.Materii" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Note" EntityType="Self.Note" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Profesori" EntityType="Self.Profesori" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Specializari" EntityType="Self.Specializari" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Utilizatori" EntityType="Self.Utilizatori" Schema="dbo" store:Type="Tables" />
+    <AssociationSet Name="FK__Absente__ElevID__52593CB8" Association="Self.FK__Absente__ElevID__52593CB8">
+      <End Role="Elevi" EntitySet="Elevi" />
+      <End Role="Absente" EntitySet="Absente" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Absente__Materie__534D60F1" Association="Self.FK__Absente__Materie__534D60F1">
+      <End Role="Materii" EntitySet="Materii" />
+      <End Role="Absente" EntitySet="Absente" />
+    </AssociationSet>
+    <AssociationSet Name="FK__AsocieriA__Mater__49C3F6B7" Association="Self.FK__AsocieriA__Mater__49C3F6B7">
+      <End Role="Materii" EntitySet="Materii" />
+      <End Role="AsocieriAnSpecMaterie" EntitySet="AsocieriAnSpecMaterie" />
+    </AssociationSet>
+    <AssociationSet Name="FK__AsocieriA__Speci__4AB81AF0" Association="Self.FK__AsocieriA__Speci__4AB81AF0">
+      <End Role="Specializari" EntitySet="Specializari" />
+      <End Role="AsocieriAnSpecMaterie" EntitySet="AsocieriAnSpecMaterie" />
+    </AssociationSet>
+    <AssociationSet Name="FK__AsocieriE__ElevI__02FC7413" Association="Self.FK__AsocieriE__ElevI__02FC7413">
+      <End Role="Elevi" EntitySet="Elevi" />
+      <End Role="AsocieriElevAnSpec" EntitySet="AsocieriElevAnSpec" />
+    </AssociationSet>
+    <AssociationSet Name="FK__AsocieriE__Speci__03F0984C" Association="Self.FK__AsocieriE__Speci__03F0984C">
+      <End Role="Specializari" EntitySet="Specializari" />
+      <End Role="AsocieriElevAnSpec" EntitySet="AsocieriElevAnSpec" />
+    </AssociationSet>
+    <AssociationSet Name="FK__AsocieriP__Clasa__4F7CD00D" Association="Self.FK__AsocieriP__Clasa__4F7CD00D">
+      <End Role="Clase" EntitySet="Clase" />
+      <End Role="AsocieriProfMaterieClasa" EntitySet="AsocieriProfMaterieClasa" />
+    </AssociationSet>
+    <AssociationSet Name="FK__AsocieriP__Mater__4E88ABD4" Association="Self.FK__AsocieriP__Mater__4E88ABD4">
+      <End Role="Materii" EntitySet="Materii" />
+      <End Role="AsocieriProfMaterieClasa" EntitySet="AsocieriProfMaterieClasa" />
+    </AssociationSet>
+    <AssociationSet Name="FK__AsocieriP__Profe__4D94879B" Association="Self.FK__AsocieriP__Profe__4D94879B">
+      <End Role="Profesori" EntitySet="Profesori" />
+      <End Role="AsocieriProfMaterieClasa" EntitySet="AsocieriProfMaterieClasa" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Clase__Diriginte__45F365D3" Association="Self.FK__Clase__Diriginte__45F365D3">
+      <End Role="Diriginti" EntitySet="Diriginti" />
+      <End Role="Clase" EntitySet="Clase" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Clase__Specializ__46E78A0C" Association="Self.FK__Clase__Specializ__46E78A0C">
+      <End Role="Specializari" EntitySet="Specializari" />
+      <End Role="Clase" EntitySet="Clase" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Diriginti__Profe__3F466844" Association="Self.FK__Diriginti__Profe__3F466844">
+      <End Role="Profesori" EntitySet="Profesori" />
+      <End Role="Diriginti" EntitySet="Diriginti" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Diriginti__Utili__3E52440B" Association="Self.FK__Diriginti__Utili__3E52440B">
+      <End Role="Utilizatori" EntitySet="Utilizatori" />
+      <End Role="Diriginti" EntitySet="Diriginti" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Elevi__Utilizato__38996AB5" Association="Self.FK__Elevi__Utilizato__38996AB5">
+      <End Role="Utilizatori" EntitySet="Utilizatori" />
+      <End Role="Elevi" EntitySet="Elevi" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Materiale__Mater__59FA5E80" Association="Self.FK__Materiale__Mater__59FA5E80">
+      <End Role="Materii" EntitySet="Materii" />
+      <End Role="MaterialeDidactice" EntitySet="MaterialeDidactice" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Note__ElevID__5629CD9C" Association="Self.FK__Note__ElevID__5629CD9C">
+      <End Role="Elevi" EntitySet="Elevi" />
+      <End Role="Note" EntitySet="Note" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Note__MaterieID__571DF1D5" Association="Self.FK__Note__MaterieID__571DF1D5">
+      <End Role="Materii" EntitySet="Materii" />
+      <End Role="Note" EntitySet="Note" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Profesori__Utili__3B75D760" Association="Self.FK__Profesori__Utili__3B75D760">
+      <End Role="Utilizatori" EntitySet="Utilizatori" />
+      <End Role="Profesori" EntitySet="Profesori" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>

@@ -1,0 +1,255 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="SchoolModelStoreContainer" CdmEntityContainer="SchoolEntities">
+    <EntitySetMapping Name="Absente">
+      <EntityTypeMapping TypeName="SchoolModel.Absente">
+        <MappingFragment StoreEntitySet="Absente">
+          <ScalarProperty Name="AbsentaID" ColumnName="AbsentaID" />
+          <ScalarProperty Name="ElevID" ColumnName="ElevID" />
+          <ScalarProperty Name="MaterieID" ColumnName="MaterieID" />
+          <ScalarProperty Name="Semestru" ColumnName="Semestru" />
+          <ScalarProperty Name="Motivare" ColumnName="Motivare" />
+          <ScalarProperty Name="data_absenta" ColumnName="data_absenta" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="AsocieriAnSpecMaterie">
+      <EntityTypeMapping TypeName="SchoolModel.AsocieriAnSpecMaterie">
+        <MappingFragment StoreEntitySet="AsocieriAnSpecMaterie">
+          <ScalarProperty Name="AsocieriAnSpecMaterieID" ColumnName="AsocieriAnSpecMaterieID" />
+          <ScalarProperty Name="AnStudiu" ColumnName="AnStudiu" />
+          <ScalarProperty Name="SpecializareID" ColumnName="SpecializareID" />
+          <ScalarProperty Name="MaterieID" ColumnName="MaterieID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="AsocieriElevAnSpec">
+      <EntityTypeMapping TypeName="SchoolModel.AsocieriElevAnSpec">
+        <MappingFragment StoreEntitySet="AsocieriElevAnSpec">
+          <ScalarProperty Name="AsocieriElevAnSpecID" ColumnName="AsocieriElevAnSpecID" />
+          <ScalarProperty Name="ElevID" ColumnName="ElevID" />
+          <ScalarProperty Name="AnStudiu" ColumnName="AnStudiu" />
+          <ScalarProperty Name="SpecializareID" ColumnName="SpecializareID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="AsocieriProfMaterieClasa">
+      <EntityTypeMapping TypeName="SchoolModel.AsocieriProfMaterieClasa">
+        <MappingFragment StoreEntitySet="AsocieriProfMaterieClasa">
+          <ScalarProperty Name="AsocieriProfMaterieClasaID" ColumnName="AsocieriProfMaterieClasaID" />
+          <ScalarProperty Name="ProfesorID" ColumnName="ProfesorID" />
+          <ScalarProperty Name="MaterieID" ColumnName="MaterieID" />
+          <ScalarProperty Name="ClasaID" ColumnName="ClasaID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Clase">
+      <EntityTypeMapping TypeName="SchoolModel.Clase">
+        <MappingFragment StoreEntitySet="Clase">
+          <ScalarProperty Name="ClasaID" ColumnName="ClasaID" />
+          <ScalarProperty Name="NumeClasa" ColumnName="NumeClasa" />
+          <ScalarProperty Name="AnStudiu" ColumnName="AnStudiu" />
+          <ScalarProperty Name="DiriginteID" ColumnName="DiriginteID" />
+          <ScalarProperty Name="SpecializareID" ColumnName="SpecializareID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Diriginti">
+      <EntityTypeMapping TypeName="SchoolModel.Diriginti">
+        <MappingFragment StoreEntitySet="Diriginti">
+          <ScalarProperty Name="DiriginteID" ColumnName="DiriginteID" />
+          <ScalarProperty Name="ProfesorID" ColumnName="ProfesorID" />
+          <ScalarProperty Name="UtilizatorID" ColumnName="UtilizatorID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Elevi">
+      <EntityTypeMapping TypeName="SchoolModel.Elevi">
+        <MappingFragment StoreEntitySet="Elevi">
+          <ScalarProperty Name="ElevID" ColumnName="ElevID" />
+          <ScalarProperty Name="Nume" ColumnName="Nume" />
+          <ScalarProperty Name="UtilizatorID" ColumnName="UtilizatorID" />
+          <ScalarProperty Name="Prenume" ColumnName="Prenume" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="MaterialeDidactice">
+      <EntityTypeMapping TypeName="SchoolModel.MaterialeDidactice">
+        <MappingFragment StoreEntitySet="MaterialeDidactice">
+          <ScalarProperty Name="MaterialID" ColumnName="MaterialID" />
+          <ScalarProperty Name="MaterieID" ColumnName="MaterieID" />
+          <ScalarProperty Name="NumeMateriale" ColumnName="NumeMateriale" />
+          <ScalarProperty Name="TipFisier" ColumnName="TipFisier" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Materii">
+      <EntityTypeMapping TypeName="SchoolModel.Materii">
+        <MappingFragment StoreEntitySet="Materii">
+          <ScalarProperty Name="MaterieID" ColumnName="MaterieID" />
+          <ScalarProperty Name="Nume" ColumnName="Nume" />
+          <ScalarProperty Name="AreTeza" ColumnName="AreTeza" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Note">
+      <EntityTypeMapping TypeName="SchoolModel.Note">
+        <MappingFragment StoreEntitySet="Note">
+          <ScalarProperty Name="NotaID" ColumnName="NotaID" />
+          <ScalarProperty Name="ElevID" ColumnName="ElevID" />
+          <ScalarProperty Name="MaterieID" ColumnName="MaterieID" />
+          <ScalarProperty Name="Valoare" ColumnName="Valoare" />
+          <ScalarProperty Name="Semestru" ColumnName="Semestru" />
+          <ScalarProperty Name="TipNota" ColumnName="TipNota" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Profesori">
+      <EntityTypeMapping TypeName="SchoolModel.Profesori">
+        <MappingFragment StoreEntitySet="Profesori">
+          <ScalarProperty Name="ProfesorID" ColumnName="ProfesorID" />
+          <ScalarProperty Name="Nume" ColumnName="Nume" />
+          <ScalarProperty Name="UtilizatorID" ColumnName="UtilizatorID" />
+          <ScalarProperty Name="Prenume" ColumnName="Prenume" />
+          <ScalarProperty Name="esteDiriginte" ColumnName="esteDiriginte" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Specializari">
+      <EntityTypeMapping TypeName="SchoolModel.Specializari">
+        <MappingFragment StoreEntitySet="Specializari">
+          <ScalarProperty Name="SpecializareID" ColumnName="SpecializareID" />
+          <ScalarProperty Name="Nume" ColumnName="Nume" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="sysdiagrams">
+      <EntityTypeMapping TypeName="SchoolModel.sysdiagrams">
+        <MappingFragment StoreEntitySet="sysdiagrams">
+          <ScalarProperty Name="name" ColumnName="name" />
+          <ScalarProperty Name="principal_id" ColumnName="principal_id" />
+          <ScalarProperty Name="diagram_id" ColumnName="diagram_id" />
+          <ScalarProperty Name="version" ColumnName="version" />
+          <ScalarProperty Name="definition" ColumnName="definition" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Utilizatori">
+      <EntityTypeMapping TypeName="SchoolModel.Utilizatori">
+        <MappingFragment StoreEntitySet="Utilizatori">
+          <ScalarProperty Name="UtilizatorID" ColumnName="UtilizatorID" />
+          <ScalarProperty Name="Nume" ColumnName="Nume" />
+          <ScalarProperty Name="Parola" ColumnName="Parola" />
+          <ScalarProperty Name="Rol" ColumnName="Rol" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <FunctionImportMapping FunctionImportName="AuthenticateUser" FunctionName="SchoolModel.Store.AuthenticateUser" />
+    <FunctionImportMapping FunctionImportName="DeleteElev" FunctionName="SchoolModel.Store.DeleteElev" />
+    <FunctionImportMapping FunctionImportName="DeleteElev_Utilizator" FunctionName="SchoolModel.Store.DeleteElev_Utilizator" />
+    <FunctionImportMapping FunctionImportName="DeleteMaterie" FunctionName="SchoolModel.Store.DeleteMaterie" />
+    <FunctionImportMapping FunctionImportName="DeleteProfesor_Utilizator" FunctionName="SchoolModel.Store.DeleteProfesor_Utilizator" />
+    <FunctionImportMapping FunctionImportName="DeleteProfessor" FunctionName="SchoolModel.Store.DeleteProfessor" />
+    <FunctionImportMapping FunctionImportName="DeleteSpecializare" FunctionName="SchoolModel.Store.DeleteSpecializare" />
+    <FunctionImportMapping FunctionImportName="DeleteUtilizator" FunctionName="SchoolModel.Store.DeleteUtilizator" />
+    <FunctionImportMapping FunctionImportName="GetAllElevi" FunctionName="SchoolModel.Store.GetAllElevi">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="SchoolModel.GetAllElevi_Result">
+          <ScalarProperty Name="ElevID" ColumnName="ElevID" />
+          <ScalarProperty Name="Nume" ColumnName="Nume" />
+          <ScalarProperty Name="Prenume" ColumnName="Prenume" />
+          <ScalarProperty Name="UtilizatorID" ColumnName="UtilizatorID" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="GetAllProfessors" FunctionName="SchoolModel.Store.GetAllProfessors">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="SchoolModel.GetAllProfessors_Result">
+          <ScalarProperty Name="ProfesorID" ColumnName="ProfesorID" />
+          <ScalarProperty Name="Nume" ColumnName="Nume" />
+          <ScalarProperty Name="UtilizatorID" ColumnName="UtilizatorID" />
+          <ScalarProperty Name="Prenume" ColumnName="Prenume" />
+          <ScalarProperty Name="esteDiriginte" ColumnName="esteDiriginte" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="GetAllSpecializari" FunctionName="SchoolModel.Store.GetAllSpecializari">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="SchoolModel.GetAllSpecializari_Result">
+          <ScalarProperty Name="SpecializareID" ColumnName="SpecializareID" />
+          <ScalarProperty Name="Nume" ColumnName="Nume" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="GetAllUtilizatori" FunctionName="SchoolModel.Store.GetAllUtilizatori">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="SchoolModel.GetAllUtilizatori_Result">
+          <ScalarProperty Name="UtilizatorID" ColumnName="UtilizatorID" />
+          <ScalarProperty Name="Nume" ColumnName="Nume" />
+          <ScalarProperty Name="Parola" ColumnName="Parola" />
+          <ScalarProperty Name="Rol" ColumnName="Rol" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="GetClase" FunctionName="SchoolModel.Store.GetClase">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="SchoolModel.GetClase_Result">
+          <ScalarProperty Name="ClasaID" ColumnName="ClasaID" />
+          <ScalarProperty Name="NumeClasa" ColumnName="NumeClasa" />
+          <ScalarProperty Name="AnStudiu" ColumnName="AnStudiu" />
+          <ScalarProperty Name="DiriginteID" ColumnName="DiriginteID" />
+          <ScalarProperty Name="SpecializareID" ColumnName="SpecializareID" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="GetMaterii" FunctionName="SchoolModel.Store.GetMaterii">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="SchoolModel.GetMaterii_Result">
+          <ScalarProperty Name="MaterieID" ColumnName="MaterieID" />
+          <ScalarProperty Name="Nume" ColumnName="Nume" />
+          <ScalarProperty Name="AreTeza" ColumnName="AreTeza" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="GetPeople" FunctionName="SchoolModel.Store.GetPeople">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="SchoolModel.GetPeople_Result">
+          <ScalarProperty Name="UtilizatorID" ColumnName="UtilizatorID" />
+          <ScalarProperty Name="Nume" ColumnName="Nume" />
+          <ScalarProperty Name="Parola" ColumnName="Parola" />
+          <ScalarProperty Name="Rol" ColumnName="Rol" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="sp_alterdiagram" FunctionName="SchoolModel.Store.sp_alterdiagram" />
+    <FunctionImportMapping FunctionImportName="sp_creatediagram" FunctionName="SchoolModel.Store.sp_creatediagram" />
+    <FunctionImportMapping FunctionImportName="sp_dropdiagram" FunctionName="SchoolModel.Store.sp_dropdiagram" />
+    <FunctionImportMapping FunctionImportName="sp_helpdiagramdefinition" FunctionName="SchoolModel.Store.sp_helpdiagramdefinition">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="SchoolModel.sp_helpdiagramdefinition_Result">
+          <ScalarProperty Name="version" ColumnName="version" />
+          <ScalarProperty Name="definition" ColumnName="definition" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="sp_helpdiagrams" FunctionName="SchoolModel.Store.sp_helpdiagrams">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="SchoolModel.sp_helpdiagrams_Result">
+          <ScalarProperty Name="Database" ColumnName="Database" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="Owner" ColumnName="Owner" />
+          <ScalarProperty Name="OwnerID" ColumnName="OwnerID" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="sp_renamediagram" FunctionName="SchoolModel.Store.sp_renamediagram" />
+    <FunctionImportMapping FunctionImportName="sp_upgraddiagrams" FunctionName="SchoolModel.Store.sp_upgraddiagrams" />
+    <FunctionImportMapping FunctionImportName="UpdateElev" FunctionName="SchoolModel.Store.UpdateElev" />
+    <FunctionImportMapping FunctionImportName="UpdateEsteDiriginte" FunctionName="SchoolModel.Store.UpdateEsteDiriginte" />
+    <FunctionImportMapping FunctionImportName="UpdateMaterie" FunctionName="SchoolModel.Store.UpdateMaterie" />
+    <FunctionImportMapping FunctionImportName="UpdateProfessor" FunctionName="SchoolModel.Store.UpdateProfessor" />
+    <FunctionImportMapping FunctionImportName="UpdateSpecializare" FunctionName="SchoolModel.Store.UpdateSpecializare" />
+    <FunctionImportMapping FunctionImportName="UpdateUtilizator" FunctionName="SchoolModel.Store.UpdateUtilizator" />
+  </EntityContainerMapping>
+</Mapping>
